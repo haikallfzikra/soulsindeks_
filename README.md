@@ -6,8 +6,8 @@ Web portofolio pribadi untuk biografi, proyek, dan kontak. Dibangun dengan Vue 3
 
 ## Tentang Saya
 
-Halo, saya **[Nama Lengkap]** — **[Role, cth: Frontend Developer / UI Designer]**.
-Fokus di **[keahlian inti, cth: Vue, Tailwind, UI Design]**. Lihat karya saya di halaman utama.
+Halo, saya **Muhammad Haikal Fahrizi Alzikra** — **Frontend Developer**.
+Fokus di **Vue, Tailwind, UI Design**. Lihat karya saya di halaman utama.
 
 - Lokasi: [Bandung, Indonesia]
 - Email: [soulsindeks@gmail.com]
