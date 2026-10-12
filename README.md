@@ -1,50 +1,35 @@
-# soulsindeks
+# Portofolio — Haikal
 
-This template should help get you started developing with Vue 3 in Vite.
+Web portofolio pribadi untuk biografi, proyek, dan kontak. Dibangun dengan Vue 3 + Vite.
 
-## Recommended IDE Setup
+> Ganti bagian [ ] di bawah dengan data kamu yang sebenarnya.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tentang Saya
 
-## Recommended Browser Setup
+Halo, saya **[Nama Lengkap]** — **[Role, cth: Frontend Developer / UI Designer]**.
+Fokus di **[keahlian inti, cth: Vue, Tailwind, UI Design]**. Lihat karya saya di halaman utama.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Lokasi: [Bandung, Indonesia]
+- Email: [soulsindeks@gmail.com]
+- LinkedIn: [https://www.linkedin.com/in/haikal-zikra-a30bb0340]
+- Github: [https://github.com/haikallfzikra]
 
-## Customize configuration
+## Tech Stack
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Vue 3 + Vite + vue-router + Pinia
+- Tailwind CSS v4
+- Vitest + ESLint + oxlint/oxfmt
 
-## Project Setup
+## Jalankan Lokal
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Struktur
 
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- `src/views/HomeView.vue` — halaman biografi utama
+- `src/layouts/MainLayout.vue` — layout dasar
+- `src/router/routes.js` — routing
