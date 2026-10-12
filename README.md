@@ -2,7 +2,7 @@
 
 Web portofolio pribadi untuk biografi, proyek, dan kontak. Dibangun dengan Vue 3 + Vite.
 
-> Ganti bagian [ ] di bawah dengan data kamu yang sebenarnya.
+> CIAO
 
 ## Tentang Saya
 
