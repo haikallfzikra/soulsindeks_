@@ -1,6 +1,6 @@
 <script setup>
-import BaseCard from './AppBasecard.vue/index.js'
-import BaseBadge from './AppBasebadge.vue/index.js'
+import BaseCard from './AppBasecard.vue'
+import BaseBadge from './AppBaseBadge.vue'
 
 defineProps({
   title: { type: String, required: true },

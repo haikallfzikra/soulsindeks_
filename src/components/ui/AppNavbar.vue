@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import BaseButton from '@/components/ui/AppBasebutton.vue'
+import BaseButton from '@/components/ui/AppBaseButton.vue'
 
 defineProps({
   brand: { type: String, required: true },

@@ -1,7 +1,10 @@
-<script setup></script>
+<script setup>
+import BackgroundField from '@/components/BackgroundField.vue'
+</script>
 
 <template>
-  <div class="min-h-dvh bg-white text-black">
+  <div class="min-h-dvh text-black">
+    <BackgroundField />
     <router-view />
   </div>
 </template>
