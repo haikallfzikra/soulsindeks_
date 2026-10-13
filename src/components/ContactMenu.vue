@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import BaseButton from '@/components/ui/AppBaseButton.vue'
+import { strings } from '@/i18n/strings.js'
 
 const props = defineProps({
   email: { type: String, required: true },
@@ -28,7 +29,12 @@ const whatsappUrl = computed(() => {
 })
 
 const copyLabel = computed(
-  () => ({ idle: 'Salin email', copied: 'Tersalin', failed: 'Gagal, salin manual' })[status.value],
+  () =>
+    ({
+      idle: strings.value.copyIdle,
+      copied: strings.value.copyDone,
+      failed: strings.value.copyFail,
+    })[status.value],
 )
 
 function close(returnFocus = false) {
@@ -96,7 +102,7 @@ onUnmounted(() => {
       aria-controls="contact-panel"
       @click="open = !open"
     >
-      Hubungi saya
+      {{ strings.contact }}
     </BaseButton>
 
     <Transition
@@ -118,8 +124,8 @@ onUnmounted(() => {
         </li>
         <li>
           <a :href="mailUrl" :class="itemClass" @click="close()">
-            <span>Kirim email</span>
-            <span class="text-xs font-normal opacity-70">Buka aplikasi email</span>
+            <span>{{ strings.sendEmail }}</span>
+            <span class="text-xs font-normal opacity-70">{{ strings.openEmailApp }}</span>
           </a>
         </li>
         <li v-if="whatsapp">
@@ -131,12 +137,12 @@ onUnmounted(() => {
             @click="close()"
           >
             <span>WhatsApp</span>
-            <span class="text-xs font-normal opacity-70">Kirim pesan langsung</span>
+            <span class="text-xs font-normal opacity-70">{{ strings.waHint }}</span>
           </a>
         </li>
       </ul>
     </Transition>
 
-    <span class="sr-only" role="status">{{ status === 'copied' ? 'Email tersalin' : '' }}</span>
+    <span class="sr-only" role="status">{{ status === 'copied' ? strings.emailCopied : '' }}</span>
   </div>
 </template>

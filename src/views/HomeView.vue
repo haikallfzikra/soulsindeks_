@@ -1,49 +1,24 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import BaseButton from '@/components/ui/AppBaseButton.vue'
 import BaseBadge from '@/components/ui/AppBaseBadge.vue'
 import ContactMenu from '@/components/ContactMenu.vue'
 import { useHomeAnimation } from '@/composables/useHomeAnimation.js'
+import { projects, projText } from '@/data/projects.js'
+import { strings } from '@/i18n/strings.js'
 
 const GITHUB_USER = 'haikallfzikra'
 const EMAIL = 'soulsindeks@gmail.com'
-const WHATSAPP = ''
-const CV_URL = ''
+const WHATSAPP = '081646983835'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/haikal-zikra-a30bb0340'
+const CV_URL = '/Documents/CV_Muhammad_Haikal_Fahrizi_Alzikra.pdf'
 
 const contact = {
   email: EMAIL,
   whatsapp: WHATSAPP,
   github: `https://github.com/${GITHUB_USER}`,
 }
-
-const headline = ['Halo,', 'saya', 'Haikal.']
-
-const projects = [
-  {
-    title: 'AQMS',
-    text: 'Sistem pemantauan kualitas udara berbasis data sensor.',
-    tags: [],
-    href: '',
-  },
-  {
-    title: 'WQMS',
-    text: 'Sistem pemantauan kualitas air berbasis data sensor.',
-    tags: [],
-    href: '',
-  },
-  {
-    title: 'Report Data',
-    text: 'Pelaporan data untuk memantau nilai hasil pengukuran.',
-    tags: [],
-    href: '',
-  },
-  {
-    title: 'Pemantauan ISPU',
-    text: 'Grafik untuk memantau Indeks Standar Pencemar Udara (ISPU).',
-    tags: [],
-    href: '',
-  },
-]
 
 const stack = [
   'Flutter',
@@ -71,10 +46,10 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
       <section class="flex flex-col gap-4 sm:gap-6">
         <h1
           class="text-[clamp(2.25rem,min(11vw,9vh),5rem)] font-bold leading-[1.05] tracking-tight"
-          aria-label="Halo, saya Haikal."
+          :aria-label="strings.heroAria"
         >
           <span
-            v-for="(word, i) in headline"
+            v-for="(word, i) in strings.headline"
             :key="i"
             aria-hidden="true"
             class="mr-[0.25em] inline-block"
@@ -89,13 +64,16 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
         </h1>
 
         <p class="intro text-base leading-relaxed sm:text-lg lg:text-xl">
-          Saya software developer di sekitar Bandung. Saya membuat aplikasi mobile, layanan backend,
-          dan sistem pemantauan lingkungan.
+          {{ strings.intro }}
         </p>
 
         <div class="flex flex-wrap gap-3">
           <div class="cta-item">
-            <ContactMenu :email="contact.email" :whatsapp="contact.whatsapp" />
+            <ContactMenu
+              :email="contact.email"
+              :whatsapp="contact.whatsapp"
+              :message="strings.waMessage"
+            />
           </div>
           <div class="cta-item">
             <BaseButton
@@ -105,6 +83,16 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
               rel="noopener noreferrer"
             >
               GitHub
+            </BaseButton>
+          </div>
+          <div class="cta-item">
+            <BaseButton
+              variant="outline"
+              :href="LINKEDIN_URL"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
             </BaseButton>
           </div>
           <div v-if="CV_URL" class="cta-item">
@@ -117,13 +105,13 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
 
       <div class="flex flex-col gap-6 sm:gap-8">
         <section class="flex flex-col gap-3">
-          <h2 class="sec-work text-xl font-bold lg:text-2xl">Proyek</h2>
+          <h2 class="sec-work text-xl font-bold lg:text-2xl">{{ strings.projectsTitle }}</h2>
           <div>
             <div class="line h-px bg-black"></div>
             <ul>
               <li
-                v-for="item in projects"
-                :key="item.title"
+                v-for="item in projects.slice(0, 3)"
+                :key="item.slug"
                 class="row relative overflow-hidden"
                 @pointerenter="enterRow"
                 @pointerleave="leaveRow"
@@ -131,36 +119,45 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
                 @focusout="leaveRow"
               >
                 <div class="fill absolute inset-0 bg-black"></div>
-                <component
-                  :is="item.href ? 'a' : 'div'"
-                  :href="item.href || undefined"
-                  :target="item.href ? '_blank' : undefined"
-                  :rel="item.href ? 'noopener noreferrer' : undefined"
+                <RouterLink
+                  :to="{ name: 'Project', params: { slug: item.slug } }"
                   class="row-content relative z-10 flex flex-col gap-1 px-4 py-3 focus-visible:outline-none"
                 >
                   <h3 class="font-semibold">{{ item.title }}</h3>
                   <p
                     class="text-sm leading-relaxed opacity-70 sm:text-base [@media(max-height:760px)_and_(max-width:1023px)]:hidden"
                   >
-                    {{ item.text }}
+                    {{ projText(item) }}
                   </p>
                   <ul v-if="item.tags.length" class="mt-1 hidden flex-wrap gap-2 lg:flex">
                     <li v-for="tag in item.tags" :key="tag">
                       <BaseBadge color="white">{{ tag }}</BaseBadge>
                     </li>
                   </ul>
-                </component>
+                  <span aria-hidden="true" class="mt-1 w-fit text-sm font-bold">→</span>
+                </RouterLink>
                 <div class="line absolute inset-x-0 bottom-0 h-px bg-black"></div>
               </li>
             </ul>
+            <RouterLink
+              v-if="projects.length > 3"
+              :to="{ name: 'Projects' }"
+              class="row-content relative z-10 mt-2 inline-block px-4 py-3 font-semibold underline underline-offset-4 transition-opacity motion-reduce:transition-none hover:opacity-60"
+            >
+              {{ strings.seeAll }}
+            </RouterLink>
           </div>
         </section>
 
         <section class="flex flex-col gap-3">
-          <h2 class="sec-tech text-xl font-bold lg:text-2xl">Teknologi yang saya pakai</h2>
+          <h2 class="sec-tech text-xl font-bold lg:text-2xl">{{ strings.techTitle }}</h2>
           <ul class="flex flex-wrap gap-2">
             <li v-for="t in stack" :key="t" class="tech">
-              <BaseBadge color="white">{{ t }}</BaseBadge>
+              <BaseBadge
+                color="white"
+                class="cursor-default transition-[transform,box-shadow] duration-100 motion-reduce:transition-none hover:-translate-y-0.5 hover:shadow-[2px_2px_0_0_#000]"
+                >{{ t }}</BaseBadge
+              >
             </li>
           </ul>
         </section>
@@ -174,7 +171,7 @@ const { enterRow, leaveRow, skip, playing } = useHomeAnimation(root)
       class="fixed bottom-4 right-4 z-30"
       @click="skip"
     >
-      Lewati animasi
+      {{ strings.skipAnimation }}
     </BaseButton>
   </div>
 </template>
