@@ -9,10 +9,10 @@ Web portofolio pribadi untuk biografi, proyek, dan kontak. Dibangun dengan Vue 3
 Halo, saya **Muhammad Haikal Fahrizi Alzikra** — **Frontend Developer**.
 Fokus di **Vue, Tailwind, UI Design**. Lihat karya saya di halaman utama.
 
-- Lokasi: [Bandung, Indonesia]
-- Email: [soulsindeks@gmail.com]
-- LinkedIn: [https://www.linkedin.com/in/haikal-zikra-a30bb0340]
-- Github: [https://github.com/haikallfzikra]
+- Lokasi : [Bandung, Indonesia]
+- Email : [soulsindeks@gmail.com]
+- LinkedIn : [https://www.linkedin.com/in/haikal-zikra-a30bb0340]
+- Github : [https://github.com/haikallfzikra]
 
 ## Tech Stack
 
