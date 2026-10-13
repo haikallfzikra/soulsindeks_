@@ -204,7 +204,7 @@ onUnmounted(() => {
             <span v-for="(ch, j) in word" :key="j" class="relative inline-block">
               <span class="ch">{{ ch }}</span>
               <span
-                class="caret absolute -right-[0.05em] bottom-[0.1em] top-[0.12em] w-[0.06em] bg-black opacity-0"
+                class="caret absolute right-[0.05em] bottom-[0.1em] top-[0.12em] w-[0.06em] bg-black opacity-0"
               ></span>
             </span>
           </span>
